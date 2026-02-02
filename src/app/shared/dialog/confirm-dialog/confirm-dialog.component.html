@@ -1,0 +1,10 @@
+<div style="padding-right: 1%;">
+  <h1 class="title">{{ title }}</h1>
+  <div>
+    <p class="message">{{ message }}</p>
+  </div>
+  <div class="button-container">
+    <button style="background: none; border: none; color: green; cursor: pointer; font-size: 20px;" type="button" pButton (click)="onYesClick()" label="Confirm">Confirm</button>
+    <button style="background: none; border: none; color: red; cursor: pointer; font-size: 20px;" type="button" pButton (click)="onNoClick()" label="Cancel">Cancel</button>
+  </div>
+</div>

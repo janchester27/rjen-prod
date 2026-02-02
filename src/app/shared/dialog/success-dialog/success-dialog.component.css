@@ -1,0 +1,40 @@
+/* Styles for the dialog title */
+h1[mat-dialog-title] {
+  font-size: 24px;
+  font-weight: bold;
+  color: #4caf50; /* Green color for success */
+  margin: 0;
+  padding: 16px;
+  text-align: center;
+  /* border-bottom: 1px solid #e0e0e0; */
+}
+
+/* Styles for the dialog content */
+div[mat-dialog-content] {
+  font-size: 16px;
+  color: #424242; /* Secondary text color */
+  padding: 16px;
+  text-align: center;
+}
+
+/* Styles for the image container */
+.image-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+::ng-deep .p-dialog .p-dialog-header {
+  border-bottom: 0 none;
+  background: #ffffff;
+  color: #374151;
+  padding: 0;
+  border-top-right-radius: 6px;
+  border-top-left-radius: 6px;
+}
+
+/* Styles for the confirmation image */
+.confirmation-image {
+  max-width: 140px; /* Adjust the size as needed */
+  height: auto;
+}

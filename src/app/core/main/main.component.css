@@ -1,0 +1,92 @@
+/* /* .main-dashboard {
+    height: 100%;
+    display:block;
+} */
+
+.header {
+  width: 100%;
+  height:auto;
+  position:relative;
+  z-index: 99;
+}
+
+/* .body {
+  height: 100%;
+  width: 100%;
+  background-color: rgb(235, 235, 235);
+} */
+
+.main-dashboard {
+background-repeat: no-repeat;
+background-size: cover;
+height: 100%;
+width:100%;
+position: absolute;
+}
+
+.main-dashboard {
+display: grid;
+grid-template-columns: 0em 1fr; /* Sidebar takes auto width, content takes the remaining space */
+grid-template-rows: auto 1fr; /* Header takes auto height, body takes the remaining space */
+grid-template-areas:
+  "sidebar content"
+  "sidebar content";
+/* height: 100%; Set the height to fill the viewport */
+}
+
+.body-trimmed {
+width: calc(100%);
+}
+
+.body-md-screen {
+width: calc(100% - 5.9em);
+margin-left: 5.9em;
+}
+
+.sidebar {
+grid-area: sidebar;
+/* Style for the sidebar */
+}
+
+.content {
+grid-area: content;
+display: grid;
+grid-template-rows: auto 1fr; /* Header takes auto height, body takes the remaining space */
+grid-template-areas:
+  "header"
+  "body";
+transition: all 0.5s ease;
+}
+
+.header {
+grid-area: header;
+width: 100%;
+height: auto;
+position: relative;
+z-index: 99;
+/* padding: 1em 1em; */
+color: #ffffff;
+}
+
+.footer {
+  flex-shrink: 0;
+  }
+
+.body {
+grid-area: body;
+height: 100%;
+width: 100%;
+/* padding: 1em 1em; */
+overflow-y: auto;
+}
+
+::ng-deep .mat-body, .mat-body-2, .mat-typography .mat-body, .mat-typography .mat-body-2, .mat-typography {
+font: 400 1em Roboto, sans-serif !important;
+letter-spacing: normal !important;
+}
+
+::ng-deep .mat-body p, .mat-body-2 p, .mat-typography .mat-body p, .mat-typography .mat-body-2 p, .mat-typography p {
+  margin: 1em 0 !important;
+}
+
+

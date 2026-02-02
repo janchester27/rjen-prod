@@ -1,0 +1,33 @@
+<!-- <div class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed': ''">
+  <div class="logo-container">
+  </div>
+
+  <div class="sidenav-display">
+    <div class="logo-image">
+      <img class="logo-display" src="../../../assets/Rjen Logo.png" alt="logo" height="79px" width="84px">
+    </div>
+    <div>
+      <ul class="sidenav-nav">
+        <ng-container *ngFor="let data of nav">
+          <li class="sidenav-nav-item">
+            <a class="sidenav-nav-link"
+              *ngIf="data.routeLink !== '/login'"
+              [routerLink]="[data.routeLink]"
+              routerLinkActive="active-link"
+              [routerLinkActiveOptions]="{exact: true}">
+              <i class="sidenav-link-icon" [ngClass]="data.icon"></i>
+            </a>
+            <a class="sidenav-nav-link"
+              *ngIf="data.routeLink === '/login'"
+              (click)="openConfirmDialog(false)">
+              <i class="sidenav-link-icon" [ngClass]="data.icon"></i>
+            </a>
+          </li>
+        </ng-container>
+      </ul>
+    </div>
+    <div class="sidebar-profil">
+      <div class="sidebar-avatar"></div>
+    </div>
+  </div>
+</div> -->

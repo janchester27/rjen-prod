@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="left-container">
+      <img src="/assets/logo-sp.png"  width="50%"
+           alt="logo">
+  </div>
+
+  <div class="right-container">
+      <p class="fullscreen" (click)="toggleFullScreen()">
+          <i class="pi pi-window-maximize"></i>
+      </p>
+      <div class="login-form">
+          <h1>POINT OF SALES</h1>
+          <h2 class="h2-style">LOGIN</h2>
+          <p-toast></p-toast>
+
+          <form (ngSubmit)="form" #form="ngForm">
+              <div class="input-group">
+                  <label for="email">Email</label>
+                  <input pTooltip="Enter your email"
+                         class="email-input"
+                         tooltipPosition="top"
+                         tooltipEvent="focus"
+                         pInputText 
+                         aria-describedby="email-help"
+                         type="text"
+                         id="email"
+                         name="email"
+                         ngModel
+                         [(ngModel)]="email"
+                         required>
+              </div>
+
+              <div class="input-group">
+                  <label for="password">Password</label>
+                  <p-password pTooltip="Enter your password"
+                              tooltipPosition="top"
+                              tooltipEvent="focus"
+                              id="password"
+                              name="password"
+                              [feedback]="false"
+                              [(ngModel)]="password"
+                              #passwordField="ngModel"
+                              [toggleMask]="true">
+                  </p-password>
+              </div>
+
+              <button class="button" pButton pRipple type="submit" (click)="Login(form.value)">
+                  Login
+              </button>
+          </form>
+      </div>
+  </div>
+</div>

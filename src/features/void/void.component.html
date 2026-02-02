@@ -1,0 +1,45 @@
+<p-card class="header" [draggable]="false" [style]="{ width: '100%', height: '100%' }">
+<div class="main-container">
+             <form [formGroup]="piForm">
+            <div class="focusable fieldclass">
+                <input
+                  class="focusable"
+                  [(ngModel)]="pincode"
+                  name="pincode"
+                  pInputText
+                  formControlName="pcCtrl"
+                  placeholder="Pincode"
+                  maxlength="6"
+                  minlength="6"
+                  type="password"
+                  (input)="onInputChange($event, 'pincode')"
+                />
+                <div *ngIf="piForm.get('pcCtrl')?.invalid && (piForm.get('pcCtrl')?.dirty || piForm.get('pcCtrl')?.touched)">
+                  {{ invalidPinCode }}
+                </div>
+            </div>
+
+            <div class="focusable fieldclass">
+              <input
+                class="focusable"
+                [(ngModel)]="username"
+                name="username"
+                pInputText
+                formControlName="unCtrl"
+                type="password"
+                placeholder="User Id"
+                autocomplete="off"
+                (input)="onInputChange($event, 'username')"
+              />
+              <div *ngIf="piForm.get('unCtrl')?.invalid && (piForm.get('unCtrl')?.dirty || piForm.get('unCtrl')?.touched)">
+                {{ invalidUserId }}
+              </div>
+            </div>
+            </form>
+            <div class="button-style">
+                <button mat-button class="update-button" (click)="verifyPincode()">
+                  CONFIRM
+                </button>
+              </div>
+</div>
+</p-card>

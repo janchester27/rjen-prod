@@ -1,0 +1,18 @@
+
+<div class="header-container">
+  <h1 style="color: white;" class="date-time">Philippine Time: {{ currentDate | date: 'medium' }}</h1>
+  <div class="header-right">
+    <div class="person-icon">
+      <div class="user-name">
+        <p>{{username}}</p>
+      </div>
+    </div>
+
+    <div class="menu">
+      <p><i class="pi pi-user"></i></p>
+      <p-menu #menu [model]="items" [popup]="true"/>
+      <p-button class="menu-button" (onClick)="menu.toggle($event)" icon="pi pi-angle-down"/>
+    </div>
+
+  </div>
+</div>

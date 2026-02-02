@@ -1,0 +1,168 @@
+<div class="main-container focusable">
+  <div class="left-container">
+    <div class="rjen-logo">
+      <img class="rjen-image" src="/assets/logo-sp.png">
+    </div>
+    <div #calculator style="width: 100%;">
+      <app-keyboard (keyPress)="onVirtualKeyPress($event)"></app-keyboard>
+    </div>
+
+  </div>
+
+  <div class="right-container">
+    <div class="input-text">
+      <input pInputText id="product" type="search" class="focusable disable-text-selection" autocomplete="off"
+        placeholder="Search product here..." inputmode="none" (keyup)="applyFilter(searchbox.value, searchbox)"
+        #searchbox />
+    </div>
+
+    <div class="dropdown" #customerDropdown>
+      <p-dropdown optionLabel="name" placeholder="Select a Customer" [(ngModel)]="selectedCustomer"
+        [options]="customerNames" />
+    </div>
+
+    <div class="supplies-container">
+      <div class="td-header">
+        <p>Name</p>
+        <p>Quantity</p>
+        <p>Price</p>
+      </div>
+
+      <div class="td-body">
+        <form [formGroup]="suppliesForm" class="supplies-form">
+          <table style="width: 100%;" class="no-borders">
+            <div>
+              <tbody formArrayName="supplies">
+                <div *ngFor="let supply of supplies.controls; let i=index" [formGroupName]="i" class="supply">
+                  <div class="remove">
+                    <p (click)="showDialog()" style="color: red;" class="pi pi-trash"></p>
+                  </div>
+                  <div class="name">
+                    <input pInputText class="input" formControlName="product_name">
+                  </div>
+                  <div class="quantity focusable">
+                    <p style="color: red;" class="pi pi-minus-circle" (click)="decrementQuantity(i)"></p>
+                    <input style="text-align: center;" pInputText class="input" formControlName="quantity">
+                    <p style="color: green;" class="pi pi-plus-circle" (click)="incrementQuantity(i)"></p>
+                  </div>
+                  <div class="price" *ngIf="supply.get('product_name')?.value">
+                    <input style="text-align: right;" pInputText class="input"
+                      [value]="calculateTotalPrice(supply) | currency: 'PHP' ">
+                  </div>
+                </div>
+              </tbody>
+            </div>
+          </table>
+        </form>
+      </div>
+    </div>
+
+    <div class="dropdown-discount" #discountDropdown>
+      <p-dropdown class="discount-dropdown" optionLabel="name" placeholder="Select a Discount" [options]="discountNames"
+        [(ngModel)]="selectedDiscount" (onChange)="onDiscountChange($event)" />
+      <input pInputText id="discount" placeholder="Discount Value" readonly class="discount-input" autocomplete="off"
+        [value]="formatDiscountValue(selectedDiscount?.discount_value)" />
+    </div>
+
+    <div class="total-amount">
+      <h4>Total Amount:</h4>
+      <input pInputText class="amount" [value]="total | currency: 'PHP'">
+    </div>
+
+    <div class="paid-amount">
+      <div class="paid-container" #paidAmounts>
+        <h4 style="width: 40%;">Paid Amount:</h4>
+        <input pInputText type="number" class="amount-payment" (input)="onPaidAmountChange($event)"
+          [value]="paidAmount">
+      </div>
+      <div class="change-container">
+        <h4>Change:</h4>
+        <input [value]="remainingAmount  | currency: 'PHP'" pInputText class="payment">
+      </div>
+    </div>
+
+    <div class="button">
+
+      <button style="background-color: #16C47F; border: none;" [disabled]="!canSaveTransaction()" (click)="onSubmit()"
+        pButton>Save Transaction</button>
+    </div>
+
+  </div>
+</div>
+
+<p-dialog [(visible)]="displayDialog" modal="true" [style]="{width: '300px'}">
+  <div class="template-container">
+    <form [formGroup]="piForms">
+      <div style="padding-top: 5%; padding-bottom: 10%;" class="focusable fieldclass">
+        <input style="border: 1px solid #d1d5db;" class="focusable ng-invalid ng-dirty" [(ngModel)]="pincode"
+          name="pincode" pInputText formControlName="pcCtrl" placeholder="Pincode" maxlength="6" minlength="6"
+          type="password" (input)="onInputChange($event, 'pincode')"
+          [pTooltip]="piForms.get('pcCtrl')?.invalid && (piForms.get('pcCtrl')?.dirty || piForms.get('pcCtrl')?.touched) ? invalidPinCode : ''"
+          tooltipPosition="right" />
+      </div>
+
+      <div style="padding-bottom: 10%;" class="focusable fieldclass">
+        <input style="border: 1px solid #d1d5db;" class="focusable ng-invalid ng-dirty" [(ngModel)]="username"
+          name="username" pInputText formControlName="unCtrl" type="password" placeholder="User Id" autocomplete="off"
+          (input)="onInputChange($event, 'username')"
+          [pTooltip]="piForms.get('unCtrl')?.invalid && (piForms.get('unCtrl')?.dirty || piForms.get('unCtrl')?.touched) ? invalidPinCode : ''"
+          tooltipPosition="right" />
+      </div>
+    </form>
+    <div class="button-style">
+      <button pButton class="update-button" (click)="verifyPincode()">
+        CONFIRM
+      </button>
+    </div>
+  </div>
+</p-dialog>
+
+<div id="small-receipt-container"
+  style="display: none; font-family: monospace; font-size: 8px; width: 200px; text-align: left; padding: 0; margin: 0 0;">
+  <div style="text-align: center; font-weight: bold;">
+    <div class="rjen-logo">
+      <img class="rjen-image" src="/assets/logo-sp.png" width="40%">
+    </div>
+  </div>
+
+  <p style="text-align: center;">---------------------------------</p>
+
+  <h2 style="text-align: center; font-size: 10px; margin: 2px 0;">CASH SALES INVOICE</h2>
+
+  <div><strong>Sold to:</strong> {{ selectedCustomer?.name }}</div>
+  <div><strong>Payment Type:</strong> Cash</div>
+  <div><strong>Transaction Date:</strong> {{ transacDate | date:'yyyy-MM-dd' }}</div>
+  <div><strong>Remarks:</strong> N/A</div>
+
+  <p style="text-align: center;">---------------------------------</p>
+
+  <h3 style="font-size: 10px; margin: 2px 0;">Order Items</h3>
+  <table style="width: 100%;">
+    <thead>
+      <tr>
+        <th>QTY</th>
+        <th>Description</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let supply of supplies.controls">
+        <td>{{ supply.get('quantity')?.value }}</td>
+        <td>{{ supply.get('product_name')?.value }}</td>
+        <td>Php{{ supply.get('selling_price')?.value * supply.get('quantity')?.value }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="text-align: center;">---------------------------------</p>
+
+  <div><strong>Discount:</strong> {{ selectedDiscount?.name }}</div>
+  <div><strong>Discount Value:</strong> {{ selectedDiscount?.discount_value }}%</div>
+  <div><strong>Amount:</strong> Php{{ paidAmount }}</div>
+  <div><strong>Change:</strong> Php{{ remainingAmount }}</div>
+  <div><strong>Total Amount:</strong> Php{{ total }}</div>
+
+  <p style="text-align: center;">---------------------------------</p>
+
+  <div style="text-align: center;">Powered By: Sitesphil</div>
+</div>

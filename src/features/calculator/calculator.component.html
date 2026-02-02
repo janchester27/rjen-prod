@@ -1,0 +1,10 @@
+<div class="calculator">
+    <div class="display">{{ displayValue }}</div>
+    
+    <div class="buttons" #calculator>
+      <button *ngFor="let digit of digits" (click)="onDigitClick(digit)">{{ digit }}</button>
+      <button *ngFor="let operator of operators" (click)="onOperatorClick(operator)">{{ operator }}</button>
+      <button (click)="onClear()">C</button>
+      <button (click)="onEqual()">=</button>
+    </div>
+  </div>

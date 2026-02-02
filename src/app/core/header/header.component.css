@@ -1,0 +1,113 @@
+
+
+.header-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 3%;
+  background-color: #E55050;
+}
+
+.header-right {
+  display: flex;
+  gap: 0.5em;
+  align-items: baseline;
+  flex-direction: row;
+  padding-right: 3%;
+}
+
+.header-right mat-icon {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+  color: white;
+}
+
+.header-right p {
+  color: white;
+}
+
+p {
+  font-size: 0.9em;
+}
+
+.date-time{
+  color: black;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.h1-container{
+  display: inline-block;
+  margin-left: 58%;
+  margin-top: 15PX;
+}
+
+
+
+h1{
+  font-size: 15px;
+}
+
+.person-icon{
+  margin-bottom: 4px;
+  color: black;
+  position: relative;
+}
+
+/* .user-name{
+  margin-bottom: 10px;
+  margin-right: 70px;
+  color: black;
+} */
+
+.reset-password{
+  margin-bottom: 10px;
+  color: black;
+  position: relative;
+  /* right: 0%; */
+  left: 10%;
+  cursor: pointer;
+}
+
+.vertical-line {
+  border-left: 1px solid black;
+  height: 100%;
+  margin-left: 5px; /* Adjust the margin as needed */
+}
+
+.fullscreen{
+  visibility: visible;
+  color: white;
+  position: relative;
+  right: 0%;
+  cursor: pointer;
+}
+
+::ng-deep .p-menu.p-menu-overlay {
+  background: #ffffff;
+  border: 0 none;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+  z-index: 1002;
+  transform-origin: center top;
+  top: 100% !important;
+  left: 76% !important;
+  margin-top: calc(var(--p-anchor-gutter));
+}
+
+::ng-deep .menu-button .p-button.p-button-icon-only {
+  background: unset;
+  border: none;
+}
+
+::ng-deep .p-menu .p-menuitem-text {
+  line-height: 1;
+  font-size: 15px;
+}
+
+.menu{
+  display: flex;
+  flex-direction: row;
+  gap: 1%;
+}

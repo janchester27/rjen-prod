@@ -1,0 +1,288 @@
+.main-container {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    padding: 2%;
+}
+
+.left-container {
+    width: 40%;
+}
+
+.right-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 60%;
+    padding: 1%;
+    box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2),
+        0 1px 1px 0 rgba(0, 0, 0, 0.14),
+        0 1px 3px 0 rgba(0, 0, 0, 0.12);
+    box-sizing: border-box;
+}
+
+.input-text {
+    padding-bottom: 2%;
+}
+
+.dropdown {
+    padding-bottom: 2%;
+}
+
+.supplies-container {
+    border: 2px solid black;
+    border-radius: 1rem;
+    flex: 1;
+    overflow-y: auto;
+    margin: 10px 0;
+}
+
+.td-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-left: 5%;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.dropdown-discount {
+    display: flex;
+    flex-direction: row;
+    /* gap: 2%; */
+    justify-content: space-between;
+    padding-top: 2%;
+    padding-bottom: 1%;
+}
+
+.discount-input {
+    width: 14rem;
+    text-align: right;
+    font-weight: 800;
+}
+
+.total-amount {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.disable-text-selection {
+    -webkit-user-select: none;
+    /* Safari */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* IE 10+ */
+    user-select: none;
+}
+
+@media (hover:none) {
+    .disable-text-selection {
+        pointer-events: none;
+    }
+}
+
+.button {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1%;
+}
+
+::ng-deep .p-inputtext {
+    margin: 0;
+    width: 100%;
+    border: none;
+}
+
+::ng-deep .discount-dropdown {
+    display: inline-flex;
+    cursor: pointer;
+    position: relative;
+    -webkit-user-select: none;
+    user-select: none;
+    width: 20rem;
+}
+
+::ng-deep .p-dropdown {
+    display: inline-flex;
+    cursor: pointer;
+    position: relative;
+    -webkit-user-select: none;
+    user-select: none;
+    width: 100%;
+}
+
+::ng-deep .p-button {
+    margin: 0;
+    display: inline-flex;
+    cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
+    align-items: center;
+    vertical-align: bottom;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.supply {
+    display: flex;
+    align-items: baseline;
+    flex-direction: row;
+    gap: 6%;
+}
+
+.remove {
+    padding-left: 2%;
+}
+
+.quantity {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 3%;
+    padding-right: 5%;
+}
+
+.input {
+    width: 8rem;
+}
+
+.td-body {
+    height: 6rem;
+    overflow-y: auto;
+}
+
+.amount {
+    width: 14rem;
+    text-align: right;
+    font-weight: 800;
+}
+
+.rjen-logo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.rjen-image {
+    width: 44%;
+}
+
+.paid-container {
+    display: flex;
+    align-items: baseline;
+}
+
+::ng-deep .amount-payment {
+    border: #272829 1px solid;
+    width: 47%;
+    height: 2.5rem;
+}
+
+.paid-amount {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+::ng-deep .payment {
+    width: 11rem;
+    text-align: right;
+}
+
+.change-container {
+    display: flex;
+}
+
+::ng-deep .p-dialog {
+    display: flex;
+    flex-direction: column;
+    pointer-events: auto;
+    max-height: 90%;
+    transform: scale(1);
+    position: relative;
+}
+
+::ng-deep .p-dialog .p-dialog-header {
+    border-bottom: 0 none;
+    background: #ffffff;
+    color: #374151;
+    padding: 12px;
+    border-top-right-radius: 6px;
+    border-top-left-radius: 6px;
+}
+
+.supplies-container {
+  border: 2px solid black;
+  border-radius: 1rem;
+  flex: 1;
+  overflow-y: auto;
+  margin: 10px 0;
+  padding: 0.5rem;
+}
+
+/* Header */
+.td-header {
+  display: grid;
+  grid-template-columns: 35% 40% 25%;
+  font-weight: 800;
+  font-size: 13px;
+  padding: 0.5rem 0;
+  text-align: center;
+  /* padding: 0.5rem 0 0.5rem 10%; */
+  border-bottom: 1px solid #ccc;
+}
+
+/* Body rows */
+.td-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  overflow-y: auto;
+  max-height: 100%;
+  height: 80%;
+}
+
+/* Each row */
+.supply {
+  display: grid;
+  grid-template-columns: 5% 35% 40% 20%;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Optional input styling */
+.input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Quantity flex handling inside its column */
+.quantity {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+/* Column specific classes for better readability (optional) */
+.remove, .remove-header,
+.name, .name-header,
+.quantity, .quantity-header,
+.price, .price-header {
+  padding: 0 0.25rem;
+}
+
+/* @media (max-width: 768px) {
+ .td-header {
+  padding: 0.5rem 0 0.5rem 10%;
+}
+} */
