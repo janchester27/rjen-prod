@@ -19,7 +19,7 @@ interface User{
   templateUrl: './void.component.html',
   styleUrl: './void.component.css'
 })
-export class VoidComponent {
+export class VoidComponent implements OnInit {
 
   pincode!: string;
   username!: string;
@@ -46,7 +46,7 @@ export class VoidComponent {
   ngOnInit(): void {
     this.breakpointObserver
       .observe([Breakpoints.Small, Breakpoints.XSmall])
-      .subscribe((result) => (this.isSmallScreen = result.matches));
+      .subscribe((result: any) => (this.isSmallScreen = result.matches));
 
       this.piForm = this._formBuilder.group({
         unCtrl: ['', [Validators.required, UserIdValidator]],

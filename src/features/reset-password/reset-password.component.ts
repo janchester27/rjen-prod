@@ -3,7 +3,7 @@ import { Component, ViewChild, AfterViewInit, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators, FormGroup, EmailValidator } from '@angular/forms';
 import { StrongPasswordValidator } from '../../app/shared/validators/validators';
- import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { ERROR_MESSAGES } from '../../app/shared/constants/constants';
 import { FeaturesService } from '../features.service';
 import { DialogRef } from '@angular/cdk/dialog';
@@ -42,8 +42,8 @@ export class ResetPasswordComponent implements OnInit{
   ngOnInit(): void {
     this.breakpointObserver
       .observe([Breakpoints.Small, Breakpoints.XSmall])
-      .subscribe((result) => (this.isSmallScreen = result.matches));
-    
+      .subscribe((result: any) => (this.isSmallScreen = result.matches));
+
       this.steps = [
         { label: 'Step 1: Email Confirmation' },
         { label: 'Step 2: Verification' },
